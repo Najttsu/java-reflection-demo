@@ -41,7 +41,12 @@ public class ReflectionApiDemo {
         for (Field scField : scFields) {
             scField.setAccessible(true);
             System.out.printf("old %s = %s\n", scField.getName(), scField.get(sc));
-            scField.set(sc, 200);
+            if (scField.getName().equals("id")){
+                scField.set(sc, 200);
+            }
+            if (scField.getName().equals("string")){
+                scField.set(sc, "Hello Word!");
+            }
             System.out.printf("new %s = %s\n", scField.getName(), scField.get(sc));
         }
     }
